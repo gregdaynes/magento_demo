@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.7
+    env_file:
+      - env
+    ports:
+      - "3306:3306"
+    command: mysqld
+
+  magento:
+    image: alexcheng/magento2
+    env_file:
+      - env
+    ports:
+      - "80:80"
+    links:
+      - mysql
